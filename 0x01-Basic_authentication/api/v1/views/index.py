@@ -13,6 +13,21 @@ def status() -> str:
     """
     return jsonify({"status": "OK"})
 
+@app_views.route('/unauthorized', methods=['GET'], strict_slashes=False)
+def unathorized():
+    """ GET /api/v1/unauthorized
+    Return:
+      - unauthorized
+    """
+    abort(401)
+
+@app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
+def forbidden():
+    """ GET /api/v1/forbidden
+    Return:
+      - forbidden
+    """
+    abort(403)
 
 @app_views.route('/stats/', strict_slashes=False)
 def stats() -> str:
