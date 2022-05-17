@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+"""
+This module demonstrates basic authentication
+"""
+
 from typing import TypeVar, Tuple
 from auth.auth import Auth
 from base64 import b64decode
