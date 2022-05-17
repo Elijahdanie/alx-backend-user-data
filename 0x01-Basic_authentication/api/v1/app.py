@@ -50,7 +50,7 @@ def before_request():
     """
     if auth is None:
         return
-    if auth.require_auth(request.path, paths_excluded) is None:
+    if not auth.require_auth(request.path, paths_excluded):
         return
     if auth.authorization_header(request) is None:
         abort(401)
@@ -68,4 +68,4 @@ def not_found(error) -> str:
 if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")
     port = getenv("API_PORT", "5000")
-    app.run(host=host, port=port)
+    app.run(host=host, port=port, debug=True)
