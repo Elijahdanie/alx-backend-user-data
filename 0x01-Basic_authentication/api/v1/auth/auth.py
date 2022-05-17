@@ -15,9 +15,6 @@ class Auth():
     This class handles auth
     """
 
-    def __init__(self) -> None:
-        pass
-
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
         Checks if authentication is required
