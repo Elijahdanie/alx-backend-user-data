@@ -15,6 +15,7 @@ class BasicAuth(Auth):
     def __init__(self) -> None:
         super().__init__()
 
+
     def extract_base64_authorization_header(self, authorization_header: str) -> str:
         """
         Extracts the encoded base64 string from
@@ -30,6 +31,7 @@ class BasicAuth(Auth):
         else:
             return parse_auth[1]
 
+
     def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
         """
         Decodes the base64 string
@@ -44,6 +46,7 @@ class BasicAuth(Auth):
         except Exception:
             return None
 
+
     def extract_user_credentials(self, decoded_base64_authorization_header: str) -> Tuple(str, str):
         """
         This function parses the decoded base64 string
@@ -57,6 +60,7 @@ class BasicAuth(Auth):
             return None
         parsedinfo = decoded_base64_authorization_header.split(':')
         return (parsedinfo[0], parsedinfo[1])
+
 
     def user_object_from_credentials(self, user_email: str, user_pwd: str) -> TypeVar('User'):
         """
@@ -76,6 +80,7 @@ class BasicAuth(Auth):
             return None
         except Exception:
             return None
+
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
