@@ -15,7 +15,6 @@ class BasicAuth(Auth):
     def __init__(self) -> None:
         super().__init__()
 
-
     def extract_base64_authorization_header(self, authorization_header: str) -> str:
         """
         Extracts the encoded base64 string from
@@ -31,7 +30,6 @@ class BasicAuth(Auth):
         else:
             return parse_auth[1]
 
-
     def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
         """
         Decodes the base64 string
@@ -45,7 +43,6 @@ class BasicAuth(Auth):
             return b64decode(bdata).decode('utf-8')
         except Exception:
             return None
-
 
     def extract_user_credentials(self, decoded_base64_authorization_header: str) -> Tuple(str, str):
         """
@@ -61,7 +58,6 @@ class BasicAuth(Auth):
         parsedinfo = decoded_base64_authorization_header.split(':')
         return (parsedinfo[0], parsedinfo[1])
 
-
     def user_object_from_credentials(self, user_email: str, user_pwd: str) -> TypeVar('User'):
         """
         This function gets the user from the database
@@ -71,7 +67,7 @@ class BasicAuth(Auth):
         if isemail or ispwd:
             return None
         try:
-            users = User.search({'email':user_email})
+            users = User.search({'email': user_email})
             validate = users is not None or len(users) != 0
             if validate:
                 for user in users:
