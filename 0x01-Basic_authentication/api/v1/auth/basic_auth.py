@@ -5,7 +5,7 @@ This module demonstrates basic authentication
 from typing import TypeVar, Tuple
 from auth.auth import Auth
 from base64 import b64decode
-from api.v1.views import User
+from models.user import User
 
 
 class BasicAuth(Auth):
@@ -13,7 +13,6 @@ class BasicAuth(Auth):
     """
     Demonstrates basic authentication
     """
-
     def extract_base64_authorization_header(self,
                                             authorization_header: str
                                             ) -> str:
@@ -30,7 +29,6 @@ class BasicAuth(Auth):
             return None
         else:
             return parse_auth[1]
-
 
     def decode_base64_authorization_header(self,
                                            base64_authorization_header: str
@@ -65,7 +63,6 @@ class BasicAuth(Auth):
         parsedinfo = decoded_base64_authorization_header.split(':')
         return (parsedinfo[0], parsedinfo[1])
 
-
     def user_object_from_credentials(self, user_email: str, user_pwd: str
                                      ) -> TypeVar('User'):
         """
@@ -85,7 +82,6 @@ class BasicAuth(Auth):
             return None
         except Exception:
             return None
-
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
