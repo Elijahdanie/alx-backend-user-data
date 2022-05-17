@@ -8,7 +8,7 @@ user authentication
 from typing import List, TypeVar
 from flask import request
 
-class Auth:
+class Auth():
 
     """
     This class handles auth
@@ -33,7 +33,12 @@ class Auth:
         """
         ........
         """
-        return None
+        if request is None:
+            return None
+        if 'Authorization' not in request.headers.keys():
+            return None
+        else:
+            return request.headers['Authorization']
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
