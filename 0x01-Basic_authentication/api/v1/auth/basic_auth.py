@@ -16,9 +16,6 @@ class BasicAuth(Auth):
     Demonstrates basic authentication
     """
 
-    def __init__(self) -> None:
-        super().__init__()
-
     def extract_base64_authorization_header(self,
                                             authorization_header: str
                                             ) -> str:
