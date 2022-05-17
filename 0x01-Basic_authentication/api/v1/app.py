@@ -40,7 +40,7 @@ def forbidden(error) -> str:
     Return:
       - unauthorized
     """
-    return jsonify({"error": "Forbidden"}), 401
+    return jsonify({"error": "Forbidden"}), 403
 
 
 @app.before_request
@@ -68,4 +68,4 @@ def not_found(error) -> str:
 if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")
     port = getenv("API_PORT", "5000")
-    app.run(host=host, port=port, debug=True)
+    app.run(host=host, port=port)
