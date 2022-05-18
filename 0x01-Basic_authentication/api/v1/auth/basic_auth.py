@@ -13,6 +13,7 @@ class BasicAuth(Auth):
     """
     Demonstrates basic authentication
     """
+
     def extract_base64_authorization_header(self,
                                             authorization_header: str
                                             ) -> str:
@@ -45,7 +46,6 @@ class BasicAuth(Auth):
             return b64decode(bdata).decode('utf-8')
         except Exception:
             return None
-
 
     def extract_user_credentials(self,
                                  decoded_base64_authorization_header: str
