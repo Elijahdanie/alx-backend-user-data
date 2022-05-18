@@ -91,5 +91,6 @@ class BasicAuth(Auth):
         b64string = self.extract_base64_authorization_header(a_header)
         ddata = self.decode_base64_authorization_header(b64string)
         pdata = self.extract_user_credentials(ddata)
-        user = self.user_object_from_credentials(pdata[0], pdata[1])
-        return user
+        if len(pdata) == 2:
+            return self.user_object_from_credentials(pdata[0], pdata[1])
+        return None
