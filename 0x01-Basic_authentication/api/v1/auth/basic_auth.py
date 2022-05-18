@@ -55,14 +55,14 @@ class BasicAuth(Auth):
         and returns the email and username
         """
         if decoded_base64_authorization_header is None:
-            return None
+            return (None, None)
         if type(decoded_base64_authorization_header) is not str:
-            return None
+            return (None, None)
         if ':' not in decoded_base64_authorization_header:
-            return None
+            return (None, None)
         parsedinfo = decoded_base64_authorization_header.split(':', 1)
         if len(parsedinfo) != 2:
-            return None
+            return (None, None)
         return (parsedinfo[0], parsedinfo[1])
 
     def user_object_from_credentials(self, user_email: str, user_pwd: str
